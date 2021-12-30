@@ -94,18 +94,6 @@ class HepsiJet extends Component
 
     private function initClient()
     {
-        $a = [
-            'verify' => false,
-            'debug' => false,
-            'base_uri' => 'asd',
-            'headers' => [
-                'Content-Type' => 'application/xml',
-                'Accept' => 'application/xml',
-                'X-Auth-Token' => 'asd'
-            ],
-            'timeout' => '5.0'
-        ];
-
         $options = [
             'base_uri' => $this->apiUrl,
             'headers' => [
@@ -114,7 +102,6 @@ class HepsiJet extends Component
                 'X-Auth-Token' => $this->_token
             ],
         ];
-
 
         $this->_client = new Client(ArrayHelper::merge($this->clientOptions,$options));
     }

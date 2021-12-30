@@ -21,21 +21,45 @@ use yii\helpers\ArrayHelper;
 class Address extends Model
 {
     /**
-     * @var
+     * @var string
      */
     public $companyAddressId;
+
     /**
-     * @var
+     * @var string
      */
     public $addressLine1;
+
+    /**
+     * @var string
+     */
+    public $addressLine2;
+
+    /**
+     * @var string
+     */
+    public $latitude;
+
+    /**
+     * @var string
+     */
+    public $longitude;
+
+    /**
+     * @var string
+     */
+    public $postalCode;
+
     /**
      * @var Country
      */
     private $_country;
+
     /**
      * @var City
      */
     private $_city;
+
     /**
      * @var Town
      */

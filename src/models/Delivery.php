@@ -39,10 +39,40 @@ class Delivery extends Model
     public $totalParcels;
 
     /**
-     * @var integer
+     * @var double
+     * Delivery total price (TRY)
+     */
+    public $deliveryTotalPrice;
+
+    /**
+     * @var double
      * Paketlerin desi ölçüsünü verir.
      */
     public $desi;
+
+    /**
+     * @var double
+     * Delivery weight (Kg)
+     */
+    public $weight;
+
+    /**
+     * @var double
+     * Delivery width (Mt)
+     */
+    public $width;
+
+    /**
+     * @var double
+     * Delivery height (Mt)
+     */
+    public $height;
+
+    /**
+     * @var double
+     * Delivery lenght (Mt)
+     */
+    public $length;
 
     /**
      * @var integer
@@ -93,9 +123,14 @@ class Delivery extends Model
     private $_receiver;
 
     /**
-     * @var
+     * @var string
      */
     private $_product;
+
+    /**
+     * @var DeliveryContent[]
+     */
+    private $_deliveryContent = [];
 
     /**
      * @inheritDoc
@@ -114,6 +149,9 @@ class Delivery extends Model
             },
             'recipientAddress' => function () {
                 return $this->getRecipientAddress();
+            },
+            'deliveryContent' => function () {
+                return $this->getDeliveryContent();
             },
         ]);
     }
@@ -135,6 +173,38 @@ class Delivery extends Model
             $this->_receiver = $receiver;
         } elseif (is_array($receiver)) {
             $this->_receiver = new Receiver($receiver);
+        }
+    }
+
+    /**
+     * @return DeliveryContent[]
+     */
+    public function getDeliveryContent() :array
+    {
+        return $this->_deliveryContent;
+    }
+
+    /**
+     * @param array|DeliveryContent[] $deliveryContents
+     */
+    public function setDeliveryContent(array $deliveryContents): void
+    {
+        $this->_deliveryContent = [];
+
+        foreach ($deliveryContents as $deliveryContent) {
+            $this->addDeliveryContent($deliveryContent);
+        }
+    }
+
+    /**
+     * @param array|DeliveryContent $deliveryContent
+     */
+    public function addDeliveryContent($deliveryContent)
+    {
+        if ($deliveryContent instanceof DeliveryContent) {
+            $this->_deliveryContent[] = $deliveryContent;
+        } elseif (is_array($deliveryContent)) {
+            $this->_deliveryContent[] = new DeliveryContent($deliveryContent);
         }
     }
 

@@ -17,12 +17,21 @@ use mhunesi\hepsijet\models\Cargo;
  */
 class DeliveryService extends BaseService
 {
+    /**
+     * @param Cargo $cargo
+     * @return BaseService
+     */
     public function sendDeliveryOrderEnhanced(Cargo $cargo)
     {
         return $this->post('rest/delivery/sendDeliveryOrderEnhanced',['json' => $cargo->toArray()]);
     }
 
-    public function track(array $barcodes,$isTrackAdded = true)
+    /**
+     * @param array $barcodes
+     * @param bool $isTrackAdded
+     * @return BaseService
+     */
+    public function track(array $barcodes, bool $isTrackAdded = true)
     {
         return $this->post('rest/delivery/integration/track',['json' => [
             'barcodes' => $barcodes,
@@ -30,9 +39,24 @@ class DeliveryService extends BaseService
         ]]);
     }
 
-    public function deleteDeliveryOrder($deliveryNo, $deleteReason = 'IPTAL')
+    /**
+     * @param string $deliveryNo
+     * @param string $deleteReason
+     * @return BaseService
+     */
+    public function deleteDeliveryOrder(string $deliveryNo, string $deleteReason = 'IPTAL')
     {
-        return $this->post("/delivery/deleteDeliveryOrder/{$deliveryNo}",['json' => ['deleteReason' => $deleteReason]]);
+        return $this->post("rest/delivery/deleteDeliveryOrder/{$deliveryNo}",['json' => ['deleteReason' => $deleteReason]]);
+    }
+
+    /**
+     * @param string $barcode
+     * @param string $totalParcel
+     * @return BaseService
+     */
+    public function generateZplBarcode(string $barcode,string $totalParcel) :BaseService
+    {
+        return $this->get("rest/delivery/generateZplBarcode/{$barcode}/{$totalParcel}");
     }
 
 }

@@ -63,6 +63,22 @@ $hepsiJet = new HepsiJet([
 ## Create Order
 
 ```php 
+use mhunesi\hepsijet\HepsiJet;
+use mhunesi\hepsijet\models\City;
+use mhunesi\hepsijet\models\DeliveryContent;
+use mhunesi\hepsijet\models\Town;
+use mhunesi\hepsijet\models\Cargo;
+use mhunesi\hepsijet\models\Company;
+use mhunesi\hepsijet\models\Country;
+use mhunesi\hepsijet\models\Address;
+use mhunesi\hepsijet\models\Product;
+use mhunesi\hepsijet\models\Delivery;
+use mhunesi\hepsijet\models\District;
+use mhunesi\hepsijet\models\Receiver;
+use mhunesi\hepsijet\models\CurrentXDock;
+use mhunesi\hepsijet\enums\ProductCode;
+use mhunesi\hepsijet\enums\DeliverySlotOriginal;
+use mhunesi\hepsijet\enums\DeliveryType;
         
 $model = new Cargo([
     'company' => new Company([
@@ -122,6 +138,18 @@ $model = new Cargo([
             ]),
             'addressLine1' => 'Postane Mah. Barbaros Hayrettin Cad. Şule Sok. Kardeşler Apartmanı 4/11 Tuzla/İstanbul'
         ]),
+        'deliveryContent' => [
+            new DeliveryContent([
+                'sku' => 'P1',
+                'description' => 'Product 1',
+                'quantity' => 2
+            ]),
+            new DeliveryContent([
+                'sku' => 'P2',
+                'description' => 'Product 2',
+                'quantity' => 1
+            ])
+        ],
         'recipientPerson' => 'Receiver Name Lastname',
         'recipientPersonPhone1' => '7777777777'
     ])
@@ -190,6 +218,18 @@ $data = [
                 'name' => 'Postane',
             ],
         ],
+        'deliveryContent' => [
+            [
+                'sku' => 'P1',
+                'description' => 'Product 1',
+                'quantity' => 2
+            ],
+            [
+                'sku' => 'P2',
+                'description' => 'Product 2',
+                'quantity' => 1
+            ]
+        ]
     ],
     'currentXDock' => [
         'abbreviationCode' => 'CMP_ENSYRT'
