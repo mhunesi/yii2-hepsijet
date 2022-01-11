@@ -87,7 +87,7 @@ class HepsiJet extends Component
             }
 
             throw new InvalidConfigException($result['message'] ?? $response->getBody());
-        },3600);
+        },3200);
 
         return true;
     }

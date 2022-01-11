@@ -17,6 +17,16 @@ use yii\helpers\ArrayHelper;
 
 /**
  * Address Model
+ * @property string $companyAddressId
+ * @property string $addressLine1
+ * @property string $addressLine2
+ * @property string $latitude
+ * @property string $longitude
+ * @property string $postalCode
+ * @property Country $country
+ * @property City $city
+ * @property Town $town
+ * @property District $district
  */
 class Address extends Model
 {
