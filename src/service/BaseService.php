@@ -209,10 +209,10 @@ abstract class BaseService extends BaseObject
 
         if($responseStatusCode === 200 && $result['status'] === 'OK'){
             $this->_status = true;
-            $this->_message = $result['message'] ?? '';
+            $this->_message = $result['message'] ?? 'Message not found';
         }else if ($responseStatusCode !== 200){
             $this->_status = false;
-            $this->_message = $result['message'];
+            $this->_message = $result['message'] ?? 'Message not found';
         } else{
             $this->_status = false;
             $this->_message = "";
