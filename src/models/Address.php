@@ -38,27 +38,27 @@ class Address extends Model
     /**
      * @var string
      */
-    public $addressLine1;
+    public $addressLine1 = '';
 
     /**
      * @var string
      */
-    public $addressLine2;
+    public $addressLine2 = '';
 
     /**
      * @var string
      */
-    public $latitude;
+    public $latitude = '';
 
     /**
      * @var string
      */
-    public $longitude;
+    public $longitude = '';
 
     /**
      * @var string
      */
-    public $postalCode;
+    public $postalCode = '';
 
     /**
      * @var Country

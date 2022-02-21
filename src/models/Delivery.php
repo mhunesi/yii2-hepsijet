@@ -42,37 +42,37 @@ class Delivery extends Model
      * @var double
      * Delivery total price (TRY)
      */
-    public $deliveryTotalPrice;
+    public $deliveryTotalPrice = 0;
 
     /**
      * @var double
      * Paketlerin desi ölçüsünü verir.
      */
-    public $desi;
+    public $desi = 0;
 
     /**
      * @var double
      * Delivery weight (Kg)
      */
-    public $weight;
+    public $weight = 0;
 
     /**
      * @var double
      * Delivery width (Mt)
      */
-    public $width;
+    public $width = 0;
 
     /**
      * @var double
      * Delivery height (Mt)
      */
-    public $height;
+    public $height = 0;
 
     /**
      * @var double
      * Delivery lenght (Mt)
      */
-    public $length;
+    public $length = 0;
 
     /**
      * @var integer
