@@ -58,10 +58,6 @@ class HepsiJet extends Component
      */
     public function init()
     {
-        $this->_client = new Client([
-            'base_uri' => $this->apiUrl
-        ]);
-
         $this->authorize();
 
         $this->initClient();
@@ -75,10 +71,11 @@ class HepsiJet extends Component
         $this->cacheKey .= $this->username . $this->password;
 
         $this->_token = Yii::$app->cache->getOrSet($this->cacheKey,function (){
-            $client = new Client([
+
+            $client = new Client(ArrayHelper::merge($this->clientOptions,[
                 'base_uri' => $this->apiUrl,
                 'auth' => [$this->username, $this->password]
-            ]);
+            ]));
 
             $response = $client->get("auth/getToken");
 
