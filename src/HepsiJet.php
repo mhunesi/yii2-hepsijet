@@ -72,6 +72,8 @@ class HepsiJet extends Component
      */
     private function authorize()
     {
+        $this->cacheKey .= $this->username . $this->password;
+
         $this->_token = Yii::$app->cache->getOrSet($this->cacheKey,function (){
             $client = new Client([
                 'base_uri' => $this->apiUrl,
